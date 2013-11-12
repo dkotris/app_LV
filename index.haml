@@ -1,0 +1,158 @@
+!!!
+%html
+  %head
+    %title Programiranje_1 - LV
+    %link{href: "css/application.min.css", rel: "stylesheet"}/
+    %link{href: "img/favicon.png", rel: "shortcut icon"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{content: "", name: "description"}/
+    %meta{content: "", name: "author"}/
+    %meta{charset: "utf-8"}/
+  %body.background-dark
+    .content.container
+      .row
+        .col-md-8.col-md-offset-2
+          %section.widget
+            %header
+              %h4
+                %i.icon-file-alt
+                programiranje_1
+                %small &lt laboratorijske vježbe &gt
+            %br/
+            .body
+              %form.form-horizontal{"data-validate" => "parsley", method: "post", novalidate: "novalidate"}
+                %fieldset
+                  .control-group
+                    %label.control-label{for: "title"}
+                      %span.required> *
+                      Odaberite :
+                    .controls.form-group
+                      .btn-group
+                        %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+                          Labosi  
+                          %span.caret
+                        %ul.dropdown-menu
+                          %li
+                            %a{href: "#"} Laboratorijske vjezbe_1
+                          %li
+                            %a{href: "#"} Laboratorijske vjezbe_2
+                          %li
+                            %a{href: "#"} Laboratorijske vjezbe_3
+                          %li
+                            %a{href: "#"} Laboratorijske vjezbe_4
+                      .btn-group
+                        %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+                          Zadatak  
+                          %span.caret
+                        %ul.dropdown-menu.text-center
+                          %li.search-result
+                            %a{clickable: "no", href: "#"} Zadatak_#1
+                          %li
+                            %a{href: "#"} a)
+                          %li
+                            %a{href: "#"} b)
+                          %li.divider
+                          %li.search-result
+                            %a{href: "#"} Zadatak_#2
+                          %li
+                            %a{href: "#"} a)
+                          %li
+                            %a{href: "#"} b)
+                          %li
+                            %a{href: "#"} c)
+                      .btn-group
+                        %button.btn.btn-default.dropdown-toggle{"data-toggle" => "dropdown", type: "button"}
+                          Autor  
+                          %span.caret
+                        %ul.dropdown-menu.text-center
+                          %li
+                            %a{href: "#"} marko
+                          %li
+                            %a{href: "#"} luka
+                          %li
+                            %a{href: "#"} pero
+                  .control-group
+                    %label.control-label{for: "text"} Programski kod :
+                    .controls.form-group
+                      %textarea#text.form-control{name: "text", rows: "10"}
+                  .control-group
+                    %label.control-label{for: "description"} Komentar :
+                    .controls.form-group
+                      %textarea#description.form-control{name: "text", rows: "3"}
+                      %span.help-block // Optional summary of your article that can be used in previews
+                .form-actions
+                  %button.btn.btn-success{type: "submit"}
+                    %b Potvrdi
+                  %button.btn.btn-danger{type: "button"}
+                    %b Odustani
+    / jquery and friends
+    %script{src: "lib/jquery/jquery.1.9.0.min.js"} :cdata
+    %script{src: "lib/jquery/jquery-migrate-1.1.0.min.js"} :cdata
+    / jquery plugins
+    %script{src: "lib/jquery-maskedinput/jquery.maskedinput.js"}
+    %script{src: "lib/parsley/parsley.js"} :cdata
+    %script{src: "lib/icheck.js/jquery.icheck.js"}
+    %script{src: "lib/select2.js"}
+    / backbone and friends
+    %script{src: "lib/backbone/underscore-min.js"}
+    / bootstrap default plugins
+    %script{src: "lib/bootstrap/transition.js"}
+    %script{src: "lib/bootstrap/collapse.js"}
+    %script{src: "lib/bootstrap/alert.js"}
+    %script{src: "lib/bootstrap/tooltip.js"}
+    %script{src: "lib/bootstrap/popover.js"}
+    %script{src: "lib/bootstrap/button.js"}
+    %script{src: "lib/bootstrap/dropdown.js"}
+    %script{src: "lib/bootstrap/modal.js"}
+    / bootstrap custom plugins
+    %script{src: "lib/bootstrap-datepicker.js"}
+    %script{src: "lib/bootstrap-select/bootstrap-select.js"}
+    %script{src: "lib/wysihtml5/wysihtml5-0.3.0_rc2.js"}
+    %script{src: "lib/bootstrap-wysihtml5/bootstrap-wysihtml5.js"}
+    / basic application js
+    %script{src: "js/app.js"}
+    %script{src: "js/settings.js"}
+    / page specific
+    %script{src: "js/forms.js"}
+    %script#settings-template{type: "text/template"}
+      :cdata
+        <div class="setting clearfix">
+        <div>Background</div>
+        <div id="background-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+        <haml_silent>             dark = background == 'dark'; light = background == 'light';
+        </haml_silent>            <button type="button" data-value="dark" class="btn btn-sm btn-transparent #{dark? 'active' : ''}">Dark</button>
+        <button type="button" data-value="light" class="btn btn-sm btn-transparent #{light? 'active' : ''}">Light</button>
+        </div>
+        </div>
+        <div class="setting clearfix">
+        <div>Sidebar on the</div>
+        <div id="sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+        <haml_silent>             onRight = sidebar == 'right'
+        </haml_silent>            <button type="button" data-value="left" class="btn btn-sm btn-transparent #{onRight? '' : 'active'}">Left</button>
+        <button type="button" data-value="right" class="btn btn-sm btn-transparent #{onRight? 'active' : ''}">Right</button>
+        </div>
+        </div>
+        <div class="setting clearfix">
+        <div>Sidebar</div>
+        <div id="display-sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+        <haml_silent>             display = displaySidebar
+        </haml_silent>            <button type="button" data-value="true" class="btn btn-sm btn-transparent #{display? 'active' : ''}">Show</button>
+        <button type="button" data-value="false" class="btn btn-sm btn-transparent #{display? '' : 'active'}">Hide</button>
+        </div>
+        </div>
+    %script#sidebar-settings-template{type: "text/template"}
+      :cdata
+        <haml_silent>         auto = sidebarState == 'auto'
+        </haml_silent><haml_silent>         if (auto) {
+        </haml_silent>            <button type="button"
+        data-value="icons"
+        class="btn-icons btn btn-transparent btn-sm">Icons</button>
+        <button type="button"
+        data-value="auto"
+        class="btn-auto btn btn-transparent btn-sm">Auto</button>
+        <haml_silent>        } else {
+        </haml_silent>            <button type="button"
+        data-value="auto"
+        class="btn btn-transparent btn-sm">Auto</button>
+        <haml_silent>         }
+        </haml_silent>
